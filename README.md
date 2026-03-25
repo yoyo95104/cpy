@@ -1,15 +1,23 @@
-# Cpy
-a simple clipboard manager for wayland written in rust
+# Cpy 
+A simple, high-performance clipboard manager for Wayland written in Rust.
+
+## Features
+- **Lightweight**: Minimal CPU and RAM usage.
+- **Deduplication**: Doesn't save the same thing twice.
+- **Clean**: Automatically strips HTML for the picker view.
+- **Images**: Supports `image/png` (Rendering requires `rofi-wayland`).
+
 ## Installation
 ### Prerequisites
-  - wl-clipboard
-  - rofi (if you use wofi change every entry in src/main.rs , disclamer: images wont render in wofi)
-  - rust language
+- `wl-clipboard`
+- `rofi-wayland` (Note: `wofi` works if you edit `src/main.rs`, but images won't render).
+- `rust` / `cargo`
+
 ### Building the Project
 ```bash
-  git clone https://github.com/yooyo95104/cpy.git]
-  cd cpy
-  cargo install --path .
+git clone [https://github.com/yooyo95104/cpy.git](https://github.com/yooyo95104/cpy.git)
+cd cpy
+cargo install --path .
 ```
 then add a system file like this
 ```bash
@@ -21,18 +29,13 @@ then paste this
 [Unit]
 Description=cpy Clipboard Daemon
 After=graphical-session.target
-
 [Service]
 ExecStart=%h/.cargo/bin/cpy daemon
 Restart=always
-
 [Install]
 WantedBy=graphical-session.target
 ```
-
-# Tips and Tricks
-  you can have the popup menu to select which item you want to copy like this
-  ```bash
-    cpy pick
-  ```
-  you can add it to your WM with the exec command
+# Rofi/Wayland
+You can get all of your copies by rendering it via `cpy pick` it will open a rofi menu (you can change it to wofi from the main.rs file)
+# License
+This software is licensed under the GPL License , Check the `License` File for more information
